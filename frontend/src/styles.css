@@ -44,41 +44,16 @@ td.c{max-width:320px;word-break:break-all}a{color:var(--cy)}
 
 
 /* PhishShield home page background */
+/* PhishShield home page background */
 body:has(.home-page) {
   background-image:
-    linear-gradient(
-      180deg,
-      rgba(0, 5, 14, 0.48) 0%,
-      rgba(0, 0, 0, 0.72) 55%,
-      #000 100%
-    ),
-    url("/phishshield-bg.png"),
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
 
-  background-size:
-    cover,
-    cover,
-    48px 48px,
-    48px 48px;
-
-  background-position:
-    center,
-    center top,
-    -1px -1px,
-    -1px -1px;
-
-  background-repeat:
-    no-repeat,
-    no-repeat,
-    repeat,
-    repeat;
-
-  background-attachment:
-    fixed,
-    fixed,
-    scroll,
-    scroll;
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  background-repeat: repeat;
+  background-attachment: scroll;
 }
 
 /* Scan History dashboard */
