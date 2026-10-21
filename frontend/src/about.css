@@ -1,0 +1,389 @@
+
+.about-page {
+  --about-blue: #2196ff;
+  --about-purple: #8270ff;
+  --about-green: #18c98a;
+  --about-orange: #ff9d38;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+  color: #e8f1ff;
+}
+
+.about-intro {
+  max-width: 780px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 17px;
+  border: 1px solid #1765a5;
+  border-radius: 999px;
+  color: #91d5ff;
+  background: #06172a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.about-badge span {
+  color: var(--about-blue);
+  font-size: 20px;
+}
+
+.about-intro h1 {
+  margin: 20px 0 12px;
+  color: #f5f8ff;
+  font: 700 clamp(30px, 5vw, 54px)/1.12
+    "Chakra Petch", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.about-intro h1 span {
+  color: var(--about-blue);
+}
+
+.about-intro > p {
+  margin: 0 auto;
+  color: #a5b6cc;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.about-step-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.about-step {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  padding: 20px 18px 22px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #153b64;
+  border-radius: 19px;
+  background: linear-gradient(145deg, #07172a, #050a14 80%);
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.about-step:hover {
+  transform: translateY(-4px);
+  border-color: var(--about-blue);
+}
+
+.about-step-number {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--about-blue);
+  color: white;
+  font-weight: 800;
+}
+
+.about-step.purple .about-step-number {
+  background: var(--about-purple);
+}
+
+.about-step.green .about-step-number {
+  background: var(--about-green);
+}
+
+.about-step img {
+  display: block;
+  width: 100%;
+  height: 145px;
+  object-fit: contain;
+  margin: 0 auto 14px;
+  filter: drop-shadow(0 0 15px #168cff20);
+}
+
+.about-step h2 {
+  margin: 0 0 7px;
+  color: #f5f8ff;
+  font: 700 19px "Chakra Petch", sans-serif;
+}
+
+.about-step p {
+  max-width: 270px;
+  margin: 0 auto;
+  color: #a4b4c9;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.about-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 43%;
+  right: -24px;
+  transform: translateX(50%);
+  color: var(--about-blue);
+  font-size: 30px;
+  font-weight: 800;
+  text-shadow: 0 0 15px #2196ff70;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px 14px;
+  border: 1px solid #152b46;
+  border-radius: 15px;
+  background: #060e1b;
+}
+
+.about-feature-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #0c4e91;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.about-feature.purple .about-feature-icon {
+  background: #5540bd;
+}
+
+.about-feature.green .about-feature-icon {
+  background: #087d5c;
+}
+
+.about-feature.orange .about-feature-icon {
+  background: #a85c13;
+}
+
+.about-feature h3 {
+  margin: 2px 0 6px;
+  color: #f4f7ff;
+  font: 700 14px/1.4 "Chakra Petch", sans-serif;
+}
+
+.about-feature p {
+  margin: 0;
+  color: #98aabe;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.about-disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 25px;
+  padding: 21px 23px;
+  border: 1px solid #174779;
+  border-radius: 17px;
+  background: linear-gradient(100deg, #07182a, #050b15);
+}
+
+.about-info-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  height: 42px;
+  border: 2px solid var(--about-blue);
+  border-radius: 50%;
+  color: var(--about-blue);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.about-disclaimer h2 {
+  margin: 0 0 4px;
+  color: #f5f8ff;
+  font: 700 16px "Chakra Petch", sans-serif;
+}
+
+.about-disclaimer p {
+  margin: 0;
+  color: #a5b6cc;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.about-usage,
+.about-evaluation {
+  margin-top: 48px;
+}
+
+.about-section-heading {
+  margin-bottom: 18px;
+}
+
+.about-eyebrow {
+  color: var(--about-blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.about-section-heading h2 {
+  margin: 7px 0;
+  color: #f5f8ff;
+  font: 700 clamp(22px, 3vw, 30px) "Chakra Petch", sans-serif;
+}
+
+.about-section-heading p {
+  margin: 0;
+  color: #9aacc2;
+  font-size: 13px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.about-stats article {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 20px;
+  border: 1px solid #18314d;
+  border-radius: 14px;
+  background: #060d18;
+}
+
+.about-stats article span {
+  color: #9aacc2;
+  font-size: 12px;
+}
+
+.about-stats article strong {
+  color: var(--about-blue);
+  font: 700 32px "Chakra Petch", sans-serif;
+}
+
+.about-stats-note {
+  color: #ffb36b;
+  font-size: 12px;
+}
+
+.about-evaluation-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 17px;
+  border: 1px solid #283b56;
+  border-radius: 13px;
+  background: #080f1b;
+}
+
+.about-evaluation-note > span {
+  color: var(--about-blue);
+  font-size: 22px;
+}
+
+.about-evaluation-note p {
+  margin: 0;
+  color: #a5b6cc;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+  .about-steps {
+    gap: 14px;
+  }
+
+  .about-step {
+    padding: 17px 12px;
+  }
+
+  .about-step img {
+    height: 120px;
+  }
+
+  .about-arrow {
+    right: -14px;
+    font-size: 22px;
+  }
+
+  .about-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page {
+    padding: 32px 16px 48px;
+  }
+
+  .about-intro {
+    margin-bottom: 28px;
+  }
+
+  .about-desktop-break {
+    display: none;
+  }
+
+  .about-steps {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .about-step {
+    min-height: auto;
+  }
+
+  .about-step img {
+    height: 165px;
+  }
+
+  .about-arrow {
+    display: none;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .about-disclaimer {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-step {
+    transition: none;
+  }
+
+  .about-step:hover {
+    transform: none;
+  }
+}

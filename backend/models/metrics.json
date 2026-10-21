@@ -1,0 +1,20 @@
+{
+  "data": "real dataset",
+  "evaluation": "stratified hostname-grouped holdout",
+  "train_rows": 405752,
+  "test_rows": 101439,
+  "train_test_hostname_overlap": 0,
+  "url": {
+    "precision": 0.534,
+    "recall": 0.526,
+    "f1": 0.53,
+    "false_positives": 10468
+  },
+  "message": {
+    "precision": 0.951,
+    "recall": 0.941,
+    "f1": 0.946,
+    "false_positives": 9
+  },
+  "message_data": "synthetic"
+}

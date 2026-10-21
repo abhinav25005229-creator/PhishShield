@@ -1,0 +1,475 @@
+
+.image-page {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  color: #edf5ff;
+  overflow-wrap: anywhere;
+}
+
+.image-page *,
+.image-page *::before,
+.image-page *::after {
+  box-sizing: border-box;
+}
+
+.image-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  align-items: center;
+  min-height: 310px;
+  overflow: hidden;
+  border: 1px solid #19435d;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 0 0, #0877a926, transparent 60%),
+    linear-gradient(135deg, #091725, #05090f 75%);
+}
+
+.image-hero-copy {
+  padding: clamp(23px, 4vw, 40px);
+}
+
+.image-eyebrow {
+  color: #43d7ff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.image-command {
+  margin: 20px 0 10px;
+  color: #7f9ab2;
+  font-size: 11px;
+}
+
+.image-hero-copy h1 {
+  margin: 10px 0 16px;
+  font: 700 clamp(30px, 4vw, 45px)/1.13 "Chakra Petch", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.image-hero-copy h1 span {
+  color: #42d9ff;
+}
+
+.image-hero-description {
+  max-width: 470px;
+  color: #9db2c7;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.image-trust-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 23px;
+  color: #6e9cb8;
+  font-size: 9px;
+}
+
+.image-hero-art {
+  position: relative;
+  height: 310px;
+  min-width: 0;
+  overflow: hidden;
+  background: #07111c;
+}
+
+.image-hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  mask-image: linear-gradient(90deg, transparent, black 25%);
+}
+
+.image-art-label {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid #ffffff28;
+  border-radius: 8px;
+  background: #030912e8;
+  color: #d4f4ff;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+}
+
+.image-live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #3dffb0;
+  box-shadow: 0 0 9px #3dffb060;
+}
+
+.image-workspace {
+  margin-top: 25px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid #1b3549;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 100% 0, #0877a91a, transparent 50%),
+    #070c13;
+}
+
+.image-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.image-section-heading h2,
+.image-results-heading h2 {
+  margin: 8px 0 5px;
+  font: 700 clamp(22px, 3vw, 28px)/1.3 "Chakra Petch", sans-serif;
+}
+
+.image-section-heading p {
+  margin: 0;
+  color: #8fa7be;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.image-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 9px 11px;
+  border: 1px solid #20513f;
+  border-radius: 30px;
+  color: #7de8b6;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.image-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 230px;
+  overflow: hidden;
+  border: 1px dashed #27c8e8;
+  border-radius: 11px;
+  background:
+    radial-gradient(ellipse at center, #0b2736 0%, #050b12 75%);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.image-upload:hover {
+  border-color: #a0edff;
+  background: #081725;
+}
+
+.image-upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.image-upload:focus-within {
+  outline: 2px solid #41d7ff;
+  outline-offset: 3px;
+}
+
+.image-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.image-upload-icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #1b5874;
+  border-radius: 14px;
+  background: #0b2433;
+  color: #46d9ff;
+  font-size: 30px;
+}
+
+.image-upload-content strong {
+  color: #e2f7ff;
+  font-size: 14px;
+}
+
+.image-upload-content > span:not(.image-upload-icon) {
+  color: #9ab0c5;
+  font-size: 12px;
+}
+
+.image-upload-content small {
+  margin-top: 4px;
+  color: #708ba3;
+  font-size: 10px;
+}
+
+.image-preview {
+  display: block;
+  width: 100%;
+  max-height: 430px;
+  object-fit: contain;
+  background: #03070c;
+}
+
+.image-file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 13px;
+  border: 1px solid #203a4e;
+  border-radius: 9px;
+  background: #080f18;
+}
+
+.image-file-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #0b2433;
+  color: #4bd9ff;
+  font-size: 20px;
+}
+
+.image-file-info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.image-file-info strong {
+  color: #dceeff;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.image-file-info small {
+  color: #829bb2;
+  font-size: 10px;
+}
+
+.image-file-check {
+  margin-left: auto;
+  color: #75e9b5;
+}
+
+.image-progress {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 17px;
+  padding: 15px;
+  border: 1px solid #21445b;
+  border-radius: 9px;
+  background: #071522;
+}
+
+.image-progress strong {
+  font-size: 12px;
+}
+
+.image-progress p {
+  margin: 5px 0 0;
+  color: #91a8bd;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.image-spinner {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  border: 2px solid #224357;
+  border-top-color: #43d7ff;
+  border-radius: 50%;
+  animation: image-spin 0.8s linear infinite;
+}
+
+@keyframes image-spin {
+  to { transform: rotate(360deg); }
+}
+
+.image-error {
+  margin-top: 17px;
+  padding: 14px;
+  border: 1px solid #773746;
+  border-radius: 8px;
+  background: #210e15;
+}
+
+.image-error strong {
+  color: #ffb8c4;
+  font-size: 12px;
+}
+
+.image-error p {
+  margin: 6px 0 0;
+  color: #e3a9b4;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.image-privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #1c3b4e;
+  border-radius: 9px;
+  background: #06121a;
+}
+
+.image-privacy-icon {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
+  border: 1px solid #20506b;
+  border-radius: 8px;
+  color: #50d9ff;
+}
+
+.image-privacy-note p {
+  margin: 0;
+  color: #91a9bf;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.image-privacy-note strong {
+  color: #d5edfa;
+}
+
+.image-results {
+  margin-top: 26px;
+  min-width: 0;
+}
+
+.image-results-heading {
+  margin-bottom: 14px;
+}
+
+.image-safety-banner {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
+  align-items: center;
+  gap: 24px;
+  margin-top: 23px;
+  overflow: hidden;
+  border: 1px solid #205343;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #0a1b17, #070e13);
+}
+
+.image-safety-banner img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+}
+
+.image-safety-banner > div {
+  padding: 18px 20px 18px 0;
+}
+
+.image-safety-banner h2 {
+  margin: 8px 0;
+  color: #8cebc0;
+  font: 700 22px "Chakra Petch", sans-serif;
+}
+
+.image-safety-banner p {
+  margin: 0;
+  color: #a4c1b5;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.image-disclaimer {
+  margin: 18px 0 0;
+  color: #7890a8;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .image-page {
+    width: calc(100% - 22px);
+    padding-top: 14px;
+  }
+
+  .image-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .image-hero-copy {
+    padding: 24px;
+  }
+
+  .image-hero-art {
+    height: 190px;
+  }
+
+  .image-hero-art img {
+    mask-image: linear-gradient(180deg, black, black 75%, transparent);
+  }
+
+  .image-section-heading {
+    flex-direction: column;
+  }
+
+  .image-upload {
+    min-height: 190px;
+  }
+
+  .image-safety-banner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .image-safety-banner img {
+    height: 165px;
+  }
+
+  .image-safety-banner > div {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-page *,
+  .image-page *::before,
+  .image-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,47 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <radialGradient id="bg">
+      <stop offset="0%" stop-color="#153d36"/>
+      <stop offset="100%" stop-color="#091019"/>
+    </radialGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#51ffd0"/>
+      <stop offset="100%" stop-color="#168bff"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" rx="24" fill="url(#bg)"/>
+  <g stroke="#45eac0" stroke-opacity=".12">
+    <path d="M0 50H800M0 100H800M0 150H800M0 200H800M0 250H800M0 300H800M0 350H800M0 400H800M0 450H800"/>
+    <path d="M50 0V500M100 0V500M150 0V500M200 0V500M250 0V500M300 0V500M350 0V500M400 0V500M450 0V500M500 0V500M550 0V500M600 0V500M650 0V500M700 0V500M750 0V500"/>
+  </g>
+  <circle cx="400" cy="230" r="155" fill="#42f5b0" opacity=".09" filter="url(#shadow)"/>
+  <g transform="translate(400 220)" fill="none" stroke="url(#glow)" stroke-width="3">
+    <circle r="130"/>
+    <ellipse rx="57" ry="130"/>
+    <ellipse rx="105" ry="130"/>
+    <ellipse rx="130" ry="48"/>
+    <ellipse rx="130" ry="91"/>
+    <path d="M-130 0H130M0-130V130"/>
+  </g>
+  <g fill="#51ffd0">
+    <circle cx="400" cy="90" r="5"/>
+    <circle cx="270" cy="220" r="5"/>
+    <circle cx="530" cy="220" r="5"/>
+    <circle cx="400" cy="350" r="5"/>
+    <circle cx="335" cy="145" r="4"/>
+    <circle cx="466" cy="296" r="4"/>
+  </g>
+  <g transform="translate(400 220)">
+    <path d="M0-70L62-44V5C62 48 29 73 0 88C-29 73-62 48-62 5V-44Z" fill="#091b1c" stroke="#51ffd0" stroke-width="4"/>
+    <path d="M-26 2L-7 21L30-21" fill="none" stroke="#51ffd0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#51ffd0" font-family="monospace" font-size="13" letter-spacing="3">
+    <text x="36" y="40">PHISHSHIELD // THREAT INTELLIGENCE</text>
+    <text x="36" y="466">NETWORK DEFENSE</text>
+    <text x="650" y="466">SECURE / 01</text>
+  </g>
+</svg>

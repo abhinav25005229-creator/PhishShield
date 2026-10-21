@@ -1,0 +1,946 @@
+
+/* PhishShield scanner page */
+
+.scanner-page {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 30px 0 45px;
+  color: #edf5ff;
+  overflow-wrap: anywhere;
+}
+
+.scanner-page *,
+.scanner-page *::before,
+.scanner-page *::after {
+  box-sizing: border-box;
+}
+
+.scanner-eyebrow {
+  color: #48d9ff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.scanner-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 30px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid #19435d;
+  border-radius: 17px;
+  background:
+    radial-gradient(ellipse at 10% 0%, #0877a91b, transparent 55%),
+    linear-gradient(140deg, #0b1725, #05090f);
+}
+
+.scanner-hero-copy h1 {
+  margin: 15px 0;
+  font: 700 clamp(32px, 4.5vw, 48px)/1.13 "Chakra Petch", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.scanner-hero-copy h1 span {
+  color: #40d9ff;
+}
+
+.scanner-hero-copy > p {
+  max-width: 540px;
+  color: #9cb1c8;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.scanner-trust-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+  color: #6599ba;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.scanner-hero-image {
+  position: relative;
+  height: 255px;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #1e4d6a;
+  border-radius: 12px;
+  background: #07111c;
+}
+
+.scanner-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.scanner-image-overlay {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid #ffffff25;
+  border-radius: 7px;
+  background: #030912df;
+  color: #d6f5ff;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.scanner-live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #3dffb0;
+  box-shadow: 0 0 10px #3dffb055;
+}
+
+.scanner-workspace {
+  margin-top: 34px;
+}
+
+.scanner-workspace-heading,
+.scanner-result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.scanner-workspace-heading h2,
+.scanner-result-heading h2 {
+  margin: 8px 0 5px;
+  font: 700 clamp(22px, 3vw, 29px)/1.3 "Chakra Petch", sans-serif;
+}
+
+.scanner-workspace-heading p {
+  margin: 0;
+  color: #8da4bb;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.scanner-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid #20513f;
+  border-radius: 20px;
+  background: #091b15;
+  color: #72e7b1;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.scanner-console {
+  min-width: 0;
+  padding: clamp(16px, 3vw, 27px);
+  border: 1px solid #1b3449;
+  border-radius: 15px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #0d39531a, transparent 55%),
+    #070c13;
+}
+
+.scanner-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.scanner-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #203549;
+  border-radius: 10px;
+  background: #080f18;
+  color: #c2d3e5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.scanner-tabs button:hover {
+  border-color: #32789a;
+}
+
+.scanner-tabs button.active {
+  border-color: #38d7ff;
+  background: #0b2637;
+  box-shadow: inset 0 0 20px #38bdf80a;
+}
+
+.scanner-tabs button img {
+  display: block;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border: 1px solid #264b63;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.scanner-tabs button span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.scanner-tabs button strong {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.scanner-tabs button small {
+  color: #829bb2;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.scanner-input-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #80a8c4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.scanner-page .scanner-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 16px;
+  border: 1px solid #263d51;
+  border-radius: 9px;
+  outline: none;
+  background: #03070c;
+  color: #e6f3ff;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.scanner-page .scanner-input::placeholder {
+  color: #637b91;
+  opacity: 1;
+}
+
+.scanner-page .scanner-input:focus {
+  border-color: #35cfff;
+  box-shadow: 0 0 0 3px #38bdf815;
+}
+
+.scanner-page .scanner-textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.scanner-input-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 9px 0 17px;
+  color: #728ba2;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.scanner-page .scanner-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid #31c8f0;
+  border-radius: 8px;
+  background: linear-gradient(100deg, #14b8e8, #36d9f5);
+  color: #02101b;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.scanner-page .scanner-submit:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.scanner-page .scanner-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.scanner-progress {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #1b4054;
+  border-radius: 9px;
+  background: #06111b;
+}
+
+.scanner-progress-track {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #15293a;
+}
+
+.scanner-progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #39d9ff;
+  transition: width 0.3s;
+}
+
+.scanner-log {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: #67d7f8;
+  font-size: 11px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.scanner-error {
+  margin: 16px 0 0;
+  padding: 13px;
+  border: 1px solid #783745;
+  border-radius: 8px;
+  background: #210e15;
+  color: #ffb5c0;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.scanner-result {
+  margin-top: 30px;
+  padding: clamp(17px, 3vw, 27px);
+  border: 1px solid color-mix(in srgb, var(--risk-color) 35%, #182a3b);
+  border-radius: 15px;
+  background: #070c13;
+}
+
+.scanner-result-badge {
+  padding: 8px 12px;
+  border: 1px solid var(--risk-color);
+  border-radius: 20px;
+  color: var(--risk-color);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.scanner-result-overview {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
+  border: 1px solid #1b3042;
+  border-radius: 12px;
+  background: #080f18;
+}
+
+.scanner-gauge {
+  width: 140px;
+  max-width: 35%;
+  flex-shrink: 0;
+}
+
+.scanner-gauge-track,
+.scanner-gauge-bar {
+  fill: none;
+  stroke-width: 9;
+}
+
+.scanner-gauge-track {
+  stroke: #1b2a38;
+}
+
+.scanner-gauge-bar {
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 70px 70px;
+  transition: stroke-dashoffset 0.5s;
+}
+
+.scanner-gauge-number {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.scanner-gauge-caption {
+  fill: #8ca5ba;
+  font-size: 8px;
+}
+
+.scanner-result-overview h3 {
+  margin: 0 0 9px;
+  color: var(--risk-color);
+  font: 700 22px "Chakra Petch", sans-serif;
+}
+
+.scanner-result-overview p {
+  margin: 0;
+  color: #a2b4c7;
+  font-size: 12px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.scanner-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.scanner-result-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #1b3042;
+  border-radius: 11px;
+  background: #080e16;
+}
+
+.scanner-result-card h3 {
+  margin: 12px 0;
+  color: #e6f2ff;
+  font: 700 17px/1.4 "Chakra Petch", sans-serif;
+}
+
+.scanner-result-icon {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid #23506b;
+  border-radius: 8px;
+  background: #0b2232;
+  color: #50d9ff;
+}
+
+.scanner-result-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #a9bacb;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.scanner-result-card li {
+  overflow-wrap: anywhere;
+}
+
+.scanner-result-card p {
+  color: #a9bacb;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.scanner-found-links {
+  list-style: none;
+  padding: 0 !important;
+}
+
+.scanner-found-links li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #1a2b3a;
+}
+
+.scanner-found-links li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.scanner-found-links li strong {
+  flex-shrink: 0;
+  color: #51d9ff;
+}
+
+.scanner-page .scanner-report-button {
+  margin-top: 18px;
+  padding: 11px 15px;
+  border: 1px solid #2b6684;
+  border-radius: 8px;
+  background: #0b1d2a;
+  color: #65ddff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.scanner-page .scanner-report-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.scanner-safety-banner {
+  display: grid;
+  grid-template-columns: 115px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  margin-top: 25px;
+  padding: 17px;
+  border: 1px solid #205343;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #0a1b17, #070e13);
+}
+
+.scanner-safety-banner img {
+  display: block;
+  width: 115px;
+  height: 90px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.scanner-safety-banner strong {
+  color: #8cebc0;
+  font-size: 14px;
+}
+
+.scanner-safety-banner p {
+  margin: 7px 0 0;
+  color: #a4c1b5;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.scanner-disclaimer {
+  margin: 22px 0 0;
+  color: #7890a8;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .scanner-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scanner-hero-image {
+    height: 210px;
+  }
+
+  .scanner-tabs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scanner-result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scanner-workspace-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .scanner-page {
+    width: calc(100% - 22px);
+  }
+
+  .scanner-trust-points {
+    gap: 9px;
+    font-size: 8px;
+  }
+
+  .scanner-result-overview {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .scanner-gauge {
+    width: 105px;
+  }
+
+  .scanner-result-overview h3 {
+    font-size: 18px;
+  }
+
+  .scanner-safety-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .scanner-safety-banner img {
+    width: 100%;
+    height: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanner-page *,
+  .scanner-page *::before,
+  .scanner-page *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+
+
+
+/* === PhishShield scanner: reference-inspired redesign === */
+
+.scanner-page {
+  width: min(1230px, calc(100% - 36px));
+  padding-top: 18px;
+}
+
+.scanner-hero {
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 300px;
+  padding: 30px 34px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #04101a 0%, #04101a 38%, #04101acc 58%, #04101a20 100%);
+}
+
+.scanner-hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.scanner-hero-copy h1 {
+  font-size: clamp(34px, 4vw, 48px);
+}
+
+.scanner-hero-image {
+  height: 100%;
+  min-height: 240px;
+  margin: -30px -34px -30px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.scanner-hero-image img {
+  opacity: 0.95;
+  object-position: center;
+  mask-image: linear-gradient(90deg, transparent 0%, black 23%);
+}
+
+.scanner-image-overlay {
+  right: 14px;
+  bottom: 14px;
+  left: 25px;
+}
+
+.scanner-workspace {
+  margin-top: 18px;
+  padding: 23px 27px;
+  border: 1px solid #17415a;
+  border-radius: 15px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #0877a91b, transparent 55%),
+    #050b12;
+}
+
+.scanner-workspace-heading {
+  margin-bottom: 18px;
+}
+
+.scanner-console {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 235px;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.scanner-tabs {
+  grid-column: 1 / -1;
+  margin-bottom: 9px;
+}
+
+.scanner-tabs button {
+  min-height: 72px;
+  padding: 12px 14px;
+}
+
+.scanner-tabs button img {
+  width: 48px;
+  height: 48px;
+}
+
+.scanner-input-label {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.scanner-page .scanner-input {
+  grid-column: 1;
+  width: 100%;
+  min-height: 49px;
+}
+
+.scanner-page .scanner-textarea {
+  min-height: 130px;
+}
+
+.scanner-input-footer {
+  grid-column: 1 / -1;
+  grid-row: 5;
+  margin: 0;
+}
+
+.scanner-page .scanner-submit {
+  grid-column: 2;
+  grid-row: 4;
+  min-height: 49px;
+}
+
+.scanner-progress,
+.scanner-error {
+  grid-column: 1 / -1;
+}
+
+.scanner-safety-banner {
+  grid-template-columns: minmax(220px, 0.9fr) 1.1fr;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.scanner-safety-banner img {
+  width: 100%;
+  height: 155px;
+  border-radius: 0;
+}
+
+.scanner-safety-banner > div {
+  padding: 18px 20px 18px 0;
+}
+
+.scanner-safety-banner strong {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.scanner-safety-banner p {
+  font-size: 12px;
+}
+
+.scanner-disclaimer {
+  margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+  .scanner-page {
+    width: calc(100% - 22px);
+    padding-top: 12px;
+  }
+
+  .scanner-hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 23px;
+  }
+
+  .scanner-hero-image {
+    height: 190px;
+    min-height: 190px;
+    margin: 18px -23px -23px;
+  }
+
+  .scanner-hero-image img {
+    mask-image: linear-gradient(180deg, black 0%, black 75%, transparent 100%);
+  }
+
+  .scanner-workspace {
+    padding: 17px;
+  }
+
+  .scanner-console {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .scanner-tabs,
+  .scanner-input-label,
+  .scanner-page .scanner-input,
+  .scanner-input-footer,
+  .scanner-page .scanner-submit,
+  .scanner-progress,
+  .scanner-error {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .scanner-page .scanner-submit {
+    min-height: 48px;
+  }
+
+  .scanner-safety-banner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .scanner-safety-banner img {
+    height: 175px;
+  }
+
+  .scanner-safety-banner > div {
+    padding: 18px;
+  }
+}
+
+
+
+/* Detailed results and feedback */
+.scanner-prevention,
+.scanner-report-actions {
+  padding: 22px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.scanner-prevention h3,
+.scanner-report-actions h3 {
+  margin-top: 0;
+}
+
+.scanner-prevention li {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.scanner-report-actions p {
+  line-height: 1.7;
+}
+
+.cybercrime-report-button {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 18px 0 12px;
+  padding: 13px 18px;
+  border-radius: 9px;
+  background: #dc2626;
+  color: #fff !important;
+  text-align: center;
+  text-decoration: none !important;
+  font-weight: 750;
+}
+
+.cybercrime-report-button:hover {
+  background: #b91c1c;
+}
+
+.cybercrime-note {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.scanner-feedback {
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 24px;
+  border: 1px solid #dce5ef;
+  border-radius: 16px;
+  background: #fff;
+  color: #172033;
+  text-align: center;
+}
+
+.scanner-feedback h3 {
+  margin-top: 0;
+}
+
+.feedback-stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.feedback-stars button {
+  border: 0;
+  background: transparent;
+  color: #f59e0b;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.feedback-stars button:disabled {
+  cursor: default;
+}
+
+.scanner-feedback textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #dce5ef;
+  border-radius: 8px;
+  font: inherit;
+  resize: vertical;
+}
+
+.scanner-feedback > button {
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #078bd2;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.scanner-feedback > button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.scanner-feedback small {
+  display: block;
+  margin-top: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .scanner-prevention,
+  .scanner-report-actions,
+  .scanner-feedback {
+    padding: 16px;
+  }
+
+  .cybercrime-report-button {
+    width: 100%;
+  }
+}

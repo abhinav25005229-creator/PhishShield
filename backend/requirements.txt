@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+scikit-learn==1.9.1
+joblib
+numpy
+sqlalchemy
+psycopg2-binary
+
+slowapi
+python-dotenv
