@@ -4,6 +4,7 @@ import "./site.css";
 import Home from "./Home.jsx"; import App from "./App.jsx"; import Admin from "./Admin.jsx"; import QrPage from "./QrPage.jsx";
 import ImagePage from "./ImagePage.jsx"; import Blog from "./Blog.jsx"; import About from "./About.jsx"; import Library from "./Library.jsx"; import Auth from "./Auth.jsx"; import History from "./History.jsx";
 import "./site.css";
+import Subscription from "./Subscription.jsx";
 const TOOLS = [["check", "Link and message"], ["qr", "QR and UPI"], ["screenshot", "Screenshot"], ["photo", "Photo"], ["offer", "Offer letter"]];
 
 export default function Shell() {
@@ -18,7 +19,7 @@ export default function Shell() {
   const r = h.replace(/^#\/?/, ""), root = r.split("/")[0];
   const img = (m) => <ImagePage key={m} mode={m} />;
   const page = { check: <App />, qr: <QrPage />, screenshot: img("screenshot"), photo: img("photo"), offer: img("offer"),
-    library: <Library />, blog: <Blog slug={r.split("/")[1]} />, about: <About />, admin: <Admin />, login: <Auth mode="login" />, signup: <Auth mode="signup" />, history: <History /> }[root] || <Home />;
+    library: <Library />, blog: <Blog slug={r.split("/")[1]} />, about: <About />,subscription: <Subscription />, admin: <Admin />, login: <Auth mode="login" />, signup: <Auth mode="signup" />, history: <History /> }[root] || <Home />;
   const on = (k) => (root === k ? "on" : "");
   return (
     <>
@@ -28,7 +29,13 @@ export default function Shell() {
           <a href="#/" className={root === "" ? "on" : ""}>Home</a>
           <details className="menu"><summary className={TOOLS.some(([k]) => k === root) ? "on" : ""}>Tools</summary>
             <div className="drop">{TOOLS.map(([k, t]) => <a key={k} href={`#/${k}`}>{t}</a>)}</div></details>
-          <a href="#/library" className={on("library")}>Library</a><a href="#/history" className={on("history")}>History</a><a href="#/blog" className={on("blog")}>Blog</a><a href="#/about" className={on("about")}>About</a>
+
+<a href="#/library" className={on("library")}>Library</a>
+<a href="#/history" className={on("history")}>History</a>
+<a href="#/blog" className={on("blog")}>Blog</a>
+<a href="#/about" className={on("about")}>About</a>
+<a href="#/subscription" className={on("subscription")}>Plans</a>
+
           {user ? <button className="account-chip" title={user.email} onClick={() => { localStorage.removeItem("phishshield_token"); localStorage.removeItem("phishshield_user"); window.dispatchEvent(new Event("authchange")); location.hash = "#/"; }}>Sign out</button> : <a href="#/login" className={on("login")}>Log in</a>}
         </div>
         <div className="lang">{["en", "hi"].map((l) => <button key={l} className={lang === l ? "on" : ""} onClick={() => setLang(l)}>{l === "en" ? "English" : "Hinglish"}</button>)}</div>
@@ -37,7 +44,15 @@ export default function Shell() {
       <footer className="foot">
         <div><b>PhishShield</b><p>AI-assisted scam detection for students. An estimate, not a guarantee.</p></div>
         <div><b>Tools</b>{TOOLS.map(([k, t]) => <a key={k} href={`#/${k}`}>{t}</a>)}</div>
-        <div><b>Learn</b><a href="#/library">Scam library</a><a href="#/blog">Blog</a><a href="#/about">How it works</a></div>
+
+<div>
+  <b>Learn</b>
+  <a href="#/library">Scam library</a>
+  <a href="#/blog">Blog</a>
+  <a href="#/about">How it works</a>
+  <a href="#/subscription">Subscription plans</a>
+</div>
+
         <div><b>If you were scammed</b><p>Call 1930 and report at cybercrime.gov.in, then contact your bank and your college IT cell.</p></div>
       </footer>
     </>

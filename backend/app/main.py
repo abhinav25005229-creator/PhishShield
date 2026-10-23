@@ -1,6 +1,7 @@
 import os, re, json, datetime as dt, joblib, numpy as np, base64, hashlib, hmac, secrets, urllib.request, urllib.error
 from dotenv import load_dotenv
 load_dotenv()
+import razorpay
 from fastapi import FastAPI, Header, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
@@ -60,6 +61,31 @@ class Post(Base):
     id = Column(Integer, primary_key=True); slug = Column(String(100), unique=True)
     title = Column(String(200)); summary = Column(String(300)); body = Column(Text)
     created = Column(DateTime, default=dt.datetime.utcnow)
+
+class SubscriptionOrder(Base):
+    __tablename__ = "subscription_orders"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    razorpay_order_id = Column(String(100), unique=True, nullable=False, index=True)
+    plan = Column(String(30), nullable=False)
+    amount = Column(Integer, nullable=False)
+    status = Column(String(20), default="created", nullable=False)
+    razorpay_payment_id = Column(String(100), unique=True, nullable=True)
+    created = Column(DateTime, default=dt.datetime.utcnow)
+    paid_at = Column(DateTime, nullable=True)
+
+
+class UserSubscription(Base):
+    __tablename__ = "user_subscriptions"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, unique=True, nullable=False, index=True)
+    plan = Column(String(30), nullable=False)
+    status = Column(String(20), default="active", nullable=False)
+    started_at = Column(DateTime, default=dt.datetime.utcnow)
+    expires_at = Column(DateTime, nullable=False)
+
 Base.metadata.create_all(engine)   # create all new tables before routes are served
 # Lightweight migration for databases created by earlier PhishShield versions.
 # create_all does not add columns to an existing SQLite/PostgreSQL table.
@@ -84,12 +110,144 @@ def get_authorization(
         return ""
 
     return f"{credentials.scheme} {credentials.credentials}"
+
 app = FastAPI(title="PhishShield API")
+
 limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-app.add_middleware(CORSMiddleware, allow_origins=os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(","),
-                   allow_methods=["*"], allow_headers=["*"])
+app.add_exception_handler(
+    RateLimitExceeded,
+    _rate_limit_exceeded_handler
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:5173"
+    ).split(","),
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ---------------- RAZORPAY PAYMENT ----------------
+
+RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "").strip()
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "").strip()
+
+razorpay_client = None
+
+if RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET:
+    razorpay_client = razorpay.Client(
+        auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET)
+    )
+
+
+class CreateOrderRequest(BaseModel):
+    plan: str
+
+
+class VerifyPaymentRequest(BaseModel):
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str
+
+
+# Amounts are in paise: ₹199 = 19900 paise.
+# Keep these aligned with the prices displayed in Subscription.jsx.
+RAZORPAY_PLANS = {
+    "pro_monthly": 19900,
+    "pro_yearly": 199000,
+    "premium_monthly": 39900,
+    "premium_yearly": 399000,
+}
+
+
+@app.post("/api/create-order")
+def create_order(request: CreateOrderRequest):
+    if not RAZORPAY_KEY_ID or not RAZORPAY_KEY_SECRET:
+        raise HTTPException(
+            status_code=503,
+            detail="Razorpay is not configured on the server."
+        )
+
+    amount = RAZORPAY_PLANS.get(request.plan)
+
+    if amount is None or amount < 100:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid subscription plan."
+        )
+
+    try:
+        order = razorpay_client.order.create({
+            "amount": amount,
+            "currency": "INR",
+            "receipt": f"ps_{secrets.token_hex(8)}",
+        })
+
+        return {
+            "order_id": order["id"],
+            "amount": order["amount"],
+            "currency": order["currency"],
+            "key_id": RAZORPAY_KEY_ID,
+        }
+    except Exception as e:
+        print("Razorpay error type:", type(e).__name__)
+        print("Razorpay error details:", repr(e))
+        print("Razorpay error args:", repr(e.args))
+
+        raise HTTPException(
+            status_code=502,
+            detail="Razorpay order creation failed. Check backend logs."
+        )
+
+
+@app.post("/api/verify-payment")
+def verify_payment(request: VerifyPaymentRequest):
+    if not RAZORPAY_KEY_SECRET:
+        raise HTTPException(
+            status_code=503,
+            detail="Razorpay is not configured on the server."
+        )
+
+    if not all([
+        request.razorpay_order_id,
+        request.razorpay_payment_id,
+        request.razorpay_signature,
+    ]):
+        raise HTTPException(
+            status_code=400,
+            detail="Payment verification fields are required."
+        )
+
+    message = (
+        f"{request.razorpay_order_id}|"
+        f"{request.razorpay_payment_id}"
+    )
+
+    expected_signature = hmac.new(
+        RAZORPAY_KEY_SECRET.encode("utf-8"),
+        message.encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()
+
+    if not hmac.compare_digest(
+        expected_signature,
+        request.razorpay_signature
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="Payment signature verification failed."
+        )
+
+    return {
+        "verified": True,
+        "message": "Payment signature verified successfully.",
+    }
+
+# ---------------- END RAZORPAY PAYMENT ----------------
+
+
 
 @app.get("/health")
 def health():

@@ -1,0 +1,601 @@
+
+.subscription-page {
+  width: min(1180px, 100%);
+  margin: auto;
+  padding: 58px 24px 80px;
+  color: #e8f1ff;
+}
+
+.subscription-hero {
+  max-width: 740px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.subscription-eyebrow,
+.plan-includes {
+  color: #38a5ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.subscription-hero h1 {
+  margin: 18px 0 14px;
+  font: 700 clamp(32px, 5vw, 55px)/1.12 "Chakra Petch", sans-serif;
+  letter-spacing: -.035em;
+}
+
+.subscription-hero h1 span {
+  color: #2196ff;
+}
+
+.subscription-hero > p {
+  color: #a5b6cc;
+  line-height: 1.8;
+}
+
+.billing-toggle {
+  display: inline-flex;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid #1b3451;
+  border-radius: 12px;
+  background: #060d18;
+}
+
+.billing-toggle button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #9fb2c9;
+  cursor: pointer;
+}
+
+.billing-toggle button.active {
+  background: #102b49;
+  color: #fff;
+}
+
+.billing-toggle button span {
+  color: #40d7a0;
+  font-size: 11px;
+}
+
+.subscription-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.subscription-card {
+  position: relative;
+  padding: 27px 23px;
+  border: 1px solid #1b3451;
+  border-radius: 20px;
+  background: linear-gradient(155deg, #0a192b, #050b15 70%);
+}
+
+.subscription-card.popular {
+  border-color: #258dff;
+  box-shadow: 0 0 35px #168cff18;
+}
+
+.plan-popular-badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #10365c;
+  color: #8dd0ff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.plan-label {
+  color: #62baff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.subscription-card h2 {
+  margin: 8px 0;
+  font: 700 28px "Chakra Petch", sans-serif;
+}
+
+.plan-description {
+  min-height: 44px;
+  color: #9eafc5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 24px 0 8px;
+}
+
+.plan-price strong {
+  font: 700 34px "Chakra Petch", sans-serif;
+  color: #f4f8ff;
+}
+
+.plan-price span,
+.plan-billing-note {
+  color: #9eafc5;
+  font-size: 12px;
+}
+
+.plan-billing-note {
+  min-height: 15px;
+}
+
+.plan-action {
+  display: block;
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid #287fc6;
+  border-radius: 10px;
+  color: #eaf6ff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background .2s, transform .2s;
+}
+
+.plan-action:hover {
+  background: #10365c;
+  transform: translateY(-1px);
+}
+
+.popular .plan-action {
+  border-color: #2196ff;
+  background: #1677d2;
+}
+
+.popular .plan-action:hover {
+  background: #238be8;
+}
+
+.plan-divider {
+  height: 1px;
+  margin: 25px 0 19px;
+  background: #1b3048;
+}
+
+.plan-includes {
+  font-size: 10px;
+}
+
+.plan-features {
+  display: grid;
+  gap: 14px;
+  margin: 17px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #c6d4e5;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.feature-check {
+  color: #35d6a0;
+  font-weight: 900;
+}
+
+.plan-features .feature-unavailable {
+  color: #65758a;
+}
+
+.subscription-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 26px;
+  padding: 18px;
+  border: 1px solid #203b59;
+  border-radius: 14px;
+  background: #07111f;
+  color: #a5b6cc;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.subscription-note > span {
+  color: #39aaff;
+  font-size: 20px;
+}
+
+.subscription-note p {
+  margin: 0;
+}
+
+.subscription-note strong {
+  color: #f0f6ff;
+}
+
+@media (max-width: 850px) {
+  .subscription-plans {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: auto;
+  }
+
+  .plan-description {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscription-page {
+    padding: 36px 15px 50px;
+  }
+
+  .subscription-card {
+    padding: 23px 18px;
+  }
+
+  .billing-toggle button {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Subscription page refinements */
+.subscription-page {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 54px 0 35px;
+}
+
+.subscription-hero {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.subscription-eyebrow {
+  color: #35d9ed;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.subscription-hero h1 {
+  margin: 16px 0 12px;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.subscription-hero h1 span {
+  color: #35d9ed;
+}
+
+.subscription-hero > p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #92a9bf;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.billing-toggle {
+  display: inline-flex;
+  gap: 5px;
+  margin-top: 25px;
+  padding: 5px;
+  border: 1px solid #203749;
+  border-radius: 10px;
+  background: #0a1520;
+}
+
+.billing-toggle button {
+  padding: 11px 16px;
+  color: #a9bed1;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.billing-toggle button.active {
+  color: #06121b;
+  border-color: #35d9ed;
+  background: #35d9ed;
+}
+
+.billing-toggle button span {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.subscription-hero .subscription-billing-caption {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.subscription-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.subscription-card {
+  position: relative;
+  min-width: 0;
+  padding: 27px 23px;
+  border: 1px solid #1b3041;
+  border-radius: 15px;
+  background: linear-gradient(160deg, #0c1722, #080f17);
+}
+
+.subscription-card.popular {
+  border-color: #27c9e1;
+  box-shadow: 0 0 0 1px #27c9e120, 0 12px 40px #00cce410;
+}
+
+.plan-popular-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 9px;
+  color: #04141c;
+  border-radius: 5px;
+  background: #35d9ed;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.plan-label {
+  margin: 0 0 10px;
+  color: #42d7eb;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.subscription-card h2 {
+  margin: 0 0 8px;
+  font-size: 27px;
+  letter-spacing: -0.03em;
+}
+
+.plan-description {
+  min-height: 40px;
+  margin: 0;
+  color: #91a6b9;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 23px;
+}
+
+.plan-price strong {
+  color: #f2f8ff;
+  font-size: clamp(30px, 3vw, 39px);
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+
+.plan-price span {
+  color: #91a6b9;
+  font-size: 11px;
+}
+
+.plan-billing-note {
+  min-height: 17px;
+  margin: 8px 0 16px;
+  color: #8098ad;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.plan-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
+  color: #06131b;
+  border: 1px solid #35d9ed;
+  border-radius: 8px;
+  background: #35d9ed;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.subscription-card:not(.popular) .plan-action {
+  color: #c9f8ff;
+  background: #0b2530;
+}
+
+.plan-action:hover {
+  transform: translateY(-1px);
+  background: #79edfa;
+}
+
+.plan-divider {
+  height: 1px;
+  margin: 23px 0 18px;
+  background: #1b3041;
+}
+
+.plan-includes {
+  margin: 0 0 15px;
+  color: #819ab0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.plan-features {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #c6d5e3;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.feature-check {
+  flex: 0 0 auto;
+  color: #39dfbc;
+  font-weight: 900;
+}
+
+.plan-features .feature-unavailable {
+  color: #617487;
+}
+
+.feature-unavailable > span:first-child {
+  flex: 0 0 auto;
+}
+
+.subscription-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 17px 19px;
+  border: 1px solid #203749;
+  border-radius: 10px;
+  background: #0a141e;
+}
+
+.subscription-note > span {
+  color: #35d9ed;
+}
+
+.subscription-note p {
+  margin: 0;
+  color: #91a6b9;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.subscription-note strong {
+  color: #e6f1fa;
+}
+
+.subscription-back {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.subscription-back a {
+  color: #35d9ed;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+@media (max-width: 850px) {
+  .subscription-plans {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .subscription-card {
+    padding: 25px;
+  }
+
+  .plan-description {
+    min-height: 0;
+  }
+
+  .plan-price strong {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  .subscription-page {
+    width: calc(100% - 24px);
+    padding-top: 35px;
+  }
+
+  .subscription-hero {
+    margin-bottom: 25px;
+  }
+
+  .subscription-card {
+    padding: 21px 18px;
+  }
+
+  .billing-toggle button {
+    padding: 10px 12px;
+  }
+}
+
+
+/* Razorpay checkout integration */
+button.plan-action {
+  width: 100%;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+button.plan-action:disabled,
+.billing-toggle button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.subscription-payment-notice {
+  max-width: 1000px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  border: 1px solid currentColor;
+  border-radius: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.subscription-payment-notice.info {
+  color: #2563eb;
+}
+
+.subscription-payment-notice.success {
+  color: #087f5b;
+}
+
+.subscription-payment-notice.error {
+  color: #b42318;
+}

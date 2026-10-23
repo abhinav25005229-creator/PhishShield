@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { TOOLS, STEPS, SIGNALS, FAQ, LIB } from "./data.js";
 import Icon from "./Icon.jsx";
 import { HOME_IMAGES } from "./homeImages.js";
-
+import GlobalThreatMap from "./GlobalThreatMap.jsx";
+import IndiaCyberStats from "./IndiaCyberStats.jsx";
+import ScamQuiz from "./ScamQuiz.jsx";
 const API = import.meta.env.VITE_API || "http://localhost:8000";
 
 const TOOL_IMAGES = {
@@ -96,11 +98,10 @@ export default function Home() {
 
         <div className="hero-visual">
           <img
-            className="hero-illustration"
-            src={HOME_IMAGES.hero}
-            alt="Cybersecurity and digital threat monitoring"
-            loading="eager"
-          />
+  src="/cyber-shield.png"
+  alt="PhishShield cybersecurity threat detection visualization"
+  className="hero-security-image"
+/>
 
           <div className="hero-image-caption">
             <span className="status-dot" />
@@ -120,6 +121,7 @@ ACTION    VERIFY BEFORE CLICKING`}
         </div>
       </section>
 
+
       {/* LIVE STATISTICS */}
       <section className="stats" aria-label="Application scan statistics">
         {stat(s?.total, "Scans recorded")}
@@ -127,35 +129,15 @@ ACTION    VERIFY BEFORE CLICKING`}
         {stat(s?.reports, "Reports submitted")}
       </section>
 
-      {/* THREAT INTELLIGENCE */}
-     
-<section className="threat-section threat-feature">
- 
-  <div className="threat-feature-copy">
-    <p className="eyebrow">THREAT INTELLIGENCE / 01</p>
 
-    <h2 className="sec">
-      See the patterns. Stop the next scam.
-    </h2>
 
-    <p className="sub">
-      Understand common warning signs, suspicious domains and
-      social-engineering techniques before taking action.
-    </p>
+      {/* GLOBAL THREAT MAP */}
+      <GlobalThreatMap />
+      {/* INDIA CYBER CRIME STATISTICS */}
+      <IndiaCyberStats />
 
-    <a className="threat-explore-link" href="#/library">
-      Explore scam patterns <span aria-hidden="true">↗</span>
-    </a>
-  </div>
 
-  <div className="threat-feature-visual">
-    <img
-      src={HOME_IMAGES.threatIntelligence}
-      alt="Earth at night viewed from space, illustrating global cyber threat intelligence"
-      loading="lazy"
-    />
-  </div>
-</section>
+
 
 
       {/* SCANNER TOOLS */}
@@ -218,39 +200,12 @@ ACTION    VERIFY BEFORE CLICKING`}
         </ol>
       </section>
 
-      {/* ANALYSIS SIGNALS */}
-      <section className="home-section">
-        <div className="home-section-heading">
-          <p className="eyebrow">EXPLAINABLE ANALYSIS / 04</p>
-          <h2 className="sec">What goes into the score</h2>
-          <p>
-            Risk assessments depend on available signals and are not
-            guarantees that content is safe or malicious.
-          </p>
-        </div>
+     {/* INTERACTIVE SCAM QUIZ */}
+<ScamQuiz />
 
-        <div className="grid2">
-          {SIGNALS.map(([heading, description], index) => (
-            <div key={heading} className="panel signal-panel">
-              <img
-                src={SIGNAL_IMAGES[index] || HOME_IMAGES.securityAnalysis}
-                alt=""
-                loading="lazy"
-              />
-              <h3>{heading}</h3>
-              <p>{description}</p>
-            </div>
-          ))}
-        </div>
+{/* SCAM LIBRARY */}
+<section className="home-section">
 
-        <p className="note">
-          Automated results can be wrong. Verify important claims using
-          official sources and do not rely on a score alone.
-        </p>
-      </section>
-
-      {/* SCAM LIBRARY */}
-      <section className="home-section">
         <div className="home-section-heading">
           <p className="eyebrow">LEARN THE WARNING SIGNS / 05</p>
           <h2 className="sec">Scams to know</h2>

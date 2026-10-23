@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API = import.meta.env.VITE_API || "http://localhost:8000";
+const API = import.meta.env.VITE_API || "http://localhost:8010";
 
 export default function History() {
 const [rows, setRows] = useState([]);

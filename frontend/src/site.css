@@ -1347,3 +1347,93 @@ main.wide .threat-feature-visual img {
 .bar .lang {
   flex-shrink: 0 !important;
 }
+
+
+/* PhishShield hero redesign */
+.hero2 {
+  gap: clamp(28px, 4vw, 58px);
+  padding: clamp(28px, 4vw, 56px);
+  border: 1px solid #142b3a;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 78% 18%, #07344755, transparent 42%),
+    linear-gradient(135deg, #080f18 0%, #06121b 60%, #071722 100%);
+  box-shadow: 0 24px 70px #00000030;
+}
+
+.hero2 h1 {
+  max-width: 680px;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.hero2 p {
+  max-width: 540px;
+  color: #9cb2c8;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.hero-security-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #174056;
+  border-radius: 18px;
+  background: #071522;
+  box-shadow:
+    0 0 0 5px #0b1b25,
+    0 18px 50px #00c8ff16;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.hero-security-image:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 5px #0b1b25,
+    0 20px 55px #00c8ff26;
+}
+
+.hero2 button,
+.hero2 a {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.hero2 button:hover,
+.hero2 a:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .hero2 {
+    padding: 24px 18px;
+    gap: 26px;
+    border-radius: 18px;
+  }
+
+  .hero2 h1 {
+    font-size: clamp(34px, 8vw, 48px);
+  }
+
+  .hero-security-image {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-security-image,
+  .hero2 button,
+  .hero2 a {
+    transition: none;
+  }
+
+  .hero-security-image:hover,
+  .hero2 button:hover,
+  .hero2 a:hover {
+    transform: none;
+  }
+}

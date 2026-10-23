@@ -1,0 +1,363 @@
+
+.india-cyber-stats {
+  margin: 36px auto;
+  width: 100%;
+  overflow: hidden;
+  color: #111827;
+  border: 1px solid #e0e7ef;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 35, 60, 0.06);
+  font-family: inherit;
+}
+
+.india-stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 38px 26px;
+  color: #65a9ff;
+  background: #0e1b2e;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.india-stats-source-title {
+  color: #91b5dc;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-align: right;
+}
+
+.india-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.india-stat-card {
+  min-width: 0;
+  min-height: 280px;
+  padding: 34px 38px 28px;
+  border-right: 1px solid #e8edf4;
+  background: #ffffff;
+}
+
+.india-stat-card:last-child {
+  border-right: none;
+}
+
+.india-stat-card.orange {
+  background: #fffaf6;
+}
+
+.india-stat-value {
+  color: #171a23;
+  font-size: clamp(32px, 4vw, 62px);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.india-stat-card.orange .india-stat-value {
+  color: #c85c08;
+}
+
+.india-stat-accent {
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin: 15px 0 19px;
+  background: #1766d2;
+}
+
+.india-stat-card.orange .india-stat-accent {
+  background: #ff8127;
+}
+
+.india-stat-card h3 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.india-stat-card p {
+  margin: 0;
+  color: #8390a3;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.india-stats-footnote {
+  padding: 23px 38px;
+  color: #8190a5;
+  border-top: 1px solid #edf0f5;
+  background: #fbfcfe;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .india-stats-header {
+    padding: 25px;
+  }
+
+  .india-stat-card {
+    padding: 27px 22px;
+  }
+
+  .india-stat-card h3 {
+    font-size: 16px;
+  }
+
+  .india-stat-card p {
+    font-size: 14px;
+  }
+
+  .india-stats-footnote {
+    padding: 20px 25px;
+  }
+}
+
+@media (max-width: 620px) {
+  .india-cyber-stats {
+    margin: 25px auto;
+    border-radius: 16px;
+  }
+
+  .india-stats-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 20px;
+    font-size: 11px;
+  }
+
+  .india-stats-source-title {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .india-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .india-stat-card {
+    min-height: 0;
+    padding: 24px 22px;
+    border-right: none;
+    border-bottom: 1px solid #e8edf4;
+  }
+
+  .india-stat-card:last-child {
+    border-bottom: none;
+  }
+
+  .india-stat-value {
+    font-size: 43px;
+  }
+
+  .india-stat-accent {
+    margin: 12px 0 14px;
+  }
+
+  .india-stats-footnote {
+    padding: 18px 22px;
+    font-size: 12px;
+  }
+}
+
+/* Compact statistics layout */
+.india-cyber-stats {
+  margin: 28px auto;
+  border-radius: 20px;
+}
+
+.india-stats-header {
+  padding: 22px 30px;
+}
+
+.india-stat-card {
+  min-width: 0;
+  min-height: 220px;
+  padding: 27px 30px 24px;
+}
+
+.india-stat-value {
+  font-size: clamp(28px, 3.1vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.india-stat-accent {
+  margin: 12px 0 15px;
+}
+
+.india-stat-card h3 {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.india-stat-card p {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.india-stats-footnote {
+  padding: 17px 30px;
+  font-size: 13px;
+}
+
+/* Prevent long values from breaking on tablets */
+@media (max-width: 900px) {
+  .india-stats-header {
+    padding: 20px;
+  }
+
+  .india-stat-card {
+    padding: 24px 18px;
+  }
+
+  .india-stat-value {
+    font-size: clamp(25px, 3.3vw, 36px);
+  }
+
+  .india-stat-card h3 {
+    font-size: 14px;
+  }
+
+  .india-stat-card p {
+    font-size: 12px;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 620px) {
+  .india-stat-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .india-stat-value {
+    font-size: 39px;
+  }
+
+  .india-stat-card h3 {
+    font-size: 16px;
+  }
+
+  .india-stat-card p {
+    font-size: 13px;
+  }
+
+  .india-stats-footnote {
+    padding: 16px 22px;
+    font-size: 12px;
+  }
+}
+
+/* Slightly taller statistics cards */
+.india-stat-card {
+  min-height: 255px;
+  padding: 32px 30px 28px;
+}
+
+.india-stat-value {
+  font-size: clamp(30px, 3.3vw, 50px);
+}
+
+.india-stat-accent {
+  margin: 15px 0 18px;
+}
+
+.india-stat-card h3 {
+  font-size: 18px;
+}
+
+.india-stat-card p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.india-stats-footnote {
+  padding: 20px 30px;
+}
+
+@media (max-width: 900px) {
+  .india-stat-card {
+    min-height: 235px;
+    padding: 27px 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .india-stat-card {
+    min-height: auto;
+    padding: 25px 22px;
+  }
+}
+
+/* Force taller India statistics cards */
+.india-cyber-stats .india-stats-grid {
+  min-height: 300px !important;
+}
+
+.india-cyber-stats .india-stat-card {
+  min-height: 300px !important;
+  height: 300px !important;
+  padding: 36px 30px !important;
+}
+
+.india-cyber-stats .india-stats-header {
+  min-height: 90px !important;
+  padding: 25px 30px !important;
+}
+
+.india-cyber-stats .india-stats-footnote {
+  min-height: 76px !important;
+  padding: 22px 30px !important;
+}
+
+@media (max-width: 620px) {
+  .india-cyber-stats .india-stats-card {
+    height: auto !important;
+  }
+
+  .india-cyber-stats .india-stat-card {
+    height: auto !important;
+    min-height: 230px !important;
+  }
+}
+
+/* Reduce only the empty space inside the statistic cards */
+.india-cyber-stats .india-stats-grid {
+  min-height: 0 !important;
+}
+
+.india-cyber-stats .india-stat-card {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 30px 30px 24px !important;
+}
+
+.india-cyber-stats .india-stats-header {
+  min-height: 0 !important;
+}
+
+.india-cyber-stats .india-stats-footnote {
+  min-height: 0 !important;
+}
+
+@media (max-width: 620px) {
+  .india-cyber-stats .india-stat-card {
+    padding: 24px 22px !important;
+  }
+}

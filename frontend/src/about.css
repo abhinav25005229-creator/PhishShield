@@ -387,3 +387,459 @@
     transform: none;
   }
 }
+
+.about-intro {
+  max-width: 850px;
+  margin-bottom: 52px;
+}
+
+.about-intro > p {
+  max-width: 720px;
+}
+
+.about-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.about-primary-link,
+.about-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 19px;
+  border: 1px solid #1765a5;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.about-primary-link {
+  background: #1689ed;
+  border-color: #1689ed;
+  color: white;
+}
+
+.about-secondary-link {
+  background: #071321;
+  color: #b9d9f8;
+}
+
+.about-primary-link:hover,
+.about-secondary-link:hover {
+  transform: translateY(-2px);
+  border-color: #38c9ff;
+}
+
+.about-primary-link:hover {
+  background: #0876d5;
+}
+
+.about-trust-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.about-trust-line span {
+  padding: 7px 11px;
+  border: 1px solid #18314d;
+  border-radius: 999px;
+  background: #060d18;
+  color: #9cb8d4;
+  font-size: 11px;
+}
+
+.about-mission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  margin: 0 0 52px;
+  padding: 30px;
+  border: 1px solid #183957;
+  border-radius: 19px;
+  background: linear-gradient(130deg, #0a1b2d, #060b14);
+}
+
+.about-mission h2 {
+  margin: 10px 0 0;
+  color: #f5f8ff;
+  font: 700 clamp(22px, 3vw, 32px)/1.25 "Chakra Petch", sans-serif;
+}
+
+.about-mission > p {
+  margin: 0;
+  color: #a5b6cc;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.about-process-section,
+.about-tools-section {
+  margin-top: 48px;
+}
+
+.about-process-section .about-section-heading,
+.about-tools-section .about-section-heading {
+  margin-bottom: 22px;
+}
+
+.about-step img {
+  margin-top: 8px;
+}
+
+.about-step h3 {
+  margin: 0 0 8px;
+  color: #f5f8ff;
+  font: 700 19px/1.4 "Chakra Petch", sans-serif;
+}
+
+.about-feature-icon {
+  flex: 0 0 43px;
+  width: 43px;
+  border-radius: 12px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.about-limits {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid #765126;
+  border-radius: 17px;
+  background: linear-gradient(110deg, #21170c, #0b0d13);
+}
+
+.about-limit-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffb45c;
+  border-radius: 50%;
+  color: #ffb45c;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.about-limits h2 {
+  margin: 7px 0;
+  color: #fff5e7;
+  font: 700 20px "Chakra Petch", sans-serif;
+}
+
+.about-limits p {
+  margin: 0;
+  color: #d0bda4;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.about-evaluation-note > span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #2196ff;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  .about-mission {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 21px;
+  }
+
+  .about-hero-actions {
+    align-items: stretch;
+  }
+
+  .about-primary-link,
+  .about-secondary-link {
+    flex: 1 1 180px;
+  }
+
+  .about-limits {
+    padding: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-primary-link,
+  .about-secondary-link {
+    transition: none;
+  }
+}
+
+/* Wider, balanced three-step cards */
+.about-process-section {
+  width: 100%;
+  margin-top: 48px;
+}
+
+.about-process-section .about-section-heading,
+.about-tools-section .about-section-heading {
+  margin-bottom: 22px;
+}
+
+.about-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.about-step {
+  min-height: 350px;
+  padding: 25px 24px;
+  border-radius: 20px;
+}
+
+.about-step img {
+  height: 165px;
+  max-width: 100%;
+  margin: 12px auto 20px;
+  object-fit: contain;
+}
+
+.about-step h3 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.about-step p {
+  max-width: 300px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Security checks: four cards in one row */
+.about-tools-section {
+  width: 100%;
+  margin-top: 56px;
+}
+
+.about-features {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.about-feature {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: 195px;
+  padding: 22px 20px;
+  border-radius: 17px;
+}
+
+.about-feature-icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.about-feature h3 {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.about-feature p {
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+  .about-steps {
+    gap: 14px;
+  }
+
+  .about-step {
+    padding: 20px 15px;
+  }
+
+  .about-step img {
+    height: 135px;
+  }
+
+  .about-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .about-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-step {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .about-step img {
+    height: 165px;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about-feature {
+    flex-direction: row;
+    align-items: flex-start;
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .about-feature-icon {
+    flex-shrink: 0;
+  }
+}
+
+/* HOW IT WORKS — horizontal wide rows */
+.about-process-section .about-steps {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.about-process-section .about-step {
+  display: grid;
+  grid-template-columns: 60px 220px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 26px;
+  min-height: 0;
+  padding: 24px 28px;
+  text-align: left;
+}
+
+.about-process-section .about-step-number {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  margin: 0;
+  align-self: center;
+}
+
+.about-process-section .about-step img {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 140px;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.about-process-section .about-step h3 {
+  grid-column: 3;
+  grid-row: 1;
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.about-process-section .about-step p {
+  grid-column: 3;
+  grid-row: 2;
+  max-width: none;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* SECURITY CHECKS — wide horizontal cards */
+.about-tools-section .about-features {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.about-tools-section .about-feature {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  min-height: 0;
+  padding: 20px 24px;
+}
+
+.about-tools-section .about-feature-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.about-tools-section .about-feature h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.about-tools-section .about-feature p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 700px) {
+  .about-process-section .about-step {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 14px;
+    padding: 20px;
+  }
+
+  .about-process-section .about-step-number {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .about-process-section .about-step img {
+    grid-column: 2;
+    grid-row: 1;
+    height: 130px;
+  }
+
+  .about-process-section .about-step h3 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    font-size: 19px;
+  }
+
+  .about-process-section .about-step p {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .about-tools-section .about-feature {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 14px;
+    padding: 17px;
+  }
+
+  .about-tools-section .about-feature-icon {
+    width: 44px;
+    height: 44px;
+  }
+}

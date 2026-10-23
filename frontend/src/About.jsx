@@ -3,58 +3,61 @@ import { useEffect, useState } from "react";
 import { HOME_IMAGES } from "./homeImages.js";
 import "./about.css";
 
-const API = import.meta.env.VITE_API || "http://localhost:8000";
+const API = import.meta.env.VITE_API || "http://localhost:8010";
 
 const steps = [
   {
     number: "01",
-    title: "Input to Analyze",
-    description: "Paste a link, message, screenshot or QR code.",
+    title: "Submit suspicious content",
+    description:
+      "Paste a URL or message, or use a supported image, screenshot or QR scanning tool.",
     image: HOME_IMAGES.urlScanner,
-    alt: "Suspicious link scanning",
+    alt: "Suspicious URL scanning",
     color: "blue",
   },
   {
     number: "02",
-    title: "AI Analysis",
-    description: "Models examine risk indicators and available threat data.",
+    title: "Analyze risk indicators",
+    description:
+      "Configured models and available security checks examine signals that may indicate a scam.",
     image: HOME_IMAGES.securityAnalysis,
-    alt: "AI security analysis",
+    alt: "Security analysis",
     color: "purple",
   },
   {
     number: "03",
-    title: "Get Results",
-    description: "Review the risk estimate, explanation and safety tips.",
+    title: "Review the result",
+    description:
+      "Read the risk estimate, understand the available explanation and follow safety guidance.",
     image: HOME_IMAGES.threatIntelligence,
-    alt: "Cyber threat detection",
+    alt: "Threat analysis results",
     color: "green",
   },
 ];
 
 const features = [
   {
-    icon: "↗",
+    icon: "URL",
     title: "URL Scanner",
-    description: "Checks links for phishing indicators.",
+    description: "Inspect suspicious links for potential phishing indicators.",
     color: "blue",
   },
   {
-    icon: "▤",
+    icon: "SMS",
     title: "Message Analyzer",
-    description: "Flags suspicious SMS, urgency and OTP requests.",
+    description: "Identify suspicious wording, urgency and requests for sensitive information.",
     color: "purple",
   },
   {
-    icon: "▧",
-    title: "Image & QR Check",
-    description: "Analyzes supported screenshots, images and QR codes.",
+    icon: "QR",
+    title: "QR & UPI Safety",
+    description: "Use the QR analysis tool to investigate supported QR-code risks.",
     color: "green",
   },
   {
-    icon: "◇",
-    title: "Threat Protection",
-    description: "Uses configured threat intelligence when available.",
+    icon: "IMG",
+    title: "Image Analysis",
+    description: "Analyze supported screenshots and images using available checks.",
     color: "orange",
   },
 ];
@@ -64,23 +67,19 @@ export default function About() {
   const [statsError, setStatsError] = useState(false);
 
   useEffect(() => {
-    let active = true;
+    const controller = new AbortController();
 
-    fetch(`${API}/stats`)
+    fetch(`${API}/stats`, { signal: controller.signal })
       .then((response) => {
-        if (!response.ok) throw new Error("Stats unavailable");
+        if (!response.ok) throw new Error("Statistics unavailable");
         return response.json();
       })
-      .then((data) => {
-        if (active) setStats(data);
-      })
-      .catch(() => {
-        if (active) setStatsError(true);
+      .then((data) => setStats(data))
+      .catch((error) => {
+        if (error.name !== "AbortError") setStatsError(true);
       });
 
-    return () => {
-      active = false;
-    };
+    return () => controller.abort();
   }, []);
 
   const total = stats?.total ?? null;
@@ -91,82 +90,104 @@ export default function About() {
     <main className="about-page">
       <section className="about-intro">
         <span className="about-badge">
-          <span aria-hidden="true">⬡</span>
-          ABOUT PHISHSHIELD
+          <span aria-hidden="true">+</span>
+          MEET PHISHSHIELD
         </span>
 
         <h1>
-          How <span>PhishShield</span> Works
+          Think before you <span>click.</span>
         </h1>
 
         <p>
-          AI-assisted scam detection for links, messages, images and more.
-          <br className="about-desktop-break" />
-          Get a risk estimate and make safer online decisions.
+          PhishShield is an AI-assisted scam-analysis project designed to help
+          users investigate suspicious links, messages and supported media.
+          Understand potential risks before you take action.
+        </p>
+
+        <div className="about-hero-actions">
+          <a href="#/check" className="about-primary-link">
+            Scan something
+            <span aria-hidden="true"> {"->"}</span>
+          </a>
+          <a href="#/library" className="about-secondary-link">
+            Explore scam library
+          </a>
+        </div>
+
+        <div className="about-trust-line">
+          <span>URL checks</span>
+          <span>Message analysis</span>
+          <span>Security awareness</span>
+        </div>
+      </section>
+
+      <section className="about-mission">
+        <div>
+          <span className="about-eyebrow">OUR PURPOSE</span>
+          <h2>Make suspicious digital activity easier to understand.</h2>
+        </div>
+        <p>
+          Scam messages and deceptive links can pressure people into sharing
+          personal information or sending money. PhishShield brings available
+          analysis tools and explanations together to support more informed
+          decisions. It is a helpful screening tool, not a replacement for
+          independent verification.
         </p>
       </section>
 
-      <section className="about-steps" aria-label="How PhishShield works">
-        {steps.map((step, index) => (
-          <div className="about-step-wrap" key={step.number}>
-            <article className={`about-step ${step.color}`}>
-              <span className="about-step-number">{step.number}</span>
+      <section className="about-process-section" aria-label="How PhishShield works">
+        <div className="about-section-heading">
+          <span className="about-eyebrow">HOW IT WORKS</span>
+          <h2>Three steps. A clearer picture.</h2>
+          <p>Start with suspicious content and review the result before acting.</p>
+        </div>
 
+        <div className="about-steps">
+          {steps.map((step, index) => (
+            <article className={`about-step ${step.color}`} key={step.number}>
+              <span className="about-step-number">{step.number}</span>
               <img
                 src={step.image}
                 alt={step.alt}
                 loading={index === 0 ? "eager" : "lazy"}
               />
-
-              <h2>{step.title}</h2>
+              <h3>{step.title}</h3>
               <p>{step.description}</p>
             </article>
+          ))}
+        </div>
+      </section>
 
-            {index < steps.length - 1 && (
-              <span className="about-arrow" aria-hidden="true">
-                →
+      <section className="about-tools-section">
+        <div className="about-section-heading">
+          <span className="about-eyebrow">THE TOOLKIT</span>
+          <h2>Security checks for everyday situations.</h2>
+          <p>Available tools depend on the current application configuration.</p>
+        </div>
+
+        <div className="about-features">
+          {features.map((feature) => (
+            <article
+              className={`about-feature ${feature.color}`}
+              key={feature.title}
+            >
+              <span className="about-feature-icon" aria-hidden="true">
+                {feature.icon}
               </span>
-            )}
-          </div>
-        ))}
-      </section>
-
-      <section className="about-features" aria-label="PhishShield tools">
-        {features.map((feature) => (
-          <article
-            className={`about-feature ${feature.color}`}
-            key={feature.title}
-          >
-            <span className="about-feature-icon" aria-hidden="true">
-              {feature.icon}
-            </span>
-
-            <div>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section className="about-disclaimer">
-        <span className="about-info-icon" aria-hidden="true">
-          i
-        </span>
-        <div>
-          <h2>Risk estimate, not a guarantee.</h2>
-          <p>
-            PhishShield cannot detect every threat. Verify important claims
-            through official sources before clicking, paying or sharing data.
-          </p>
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="about-usage">
         <div className="about-section-heading">
-          <span className="about-eyebrow">PROJECT OVERVIEW</span>
+          <span className="about-eyebrow">PROJECT ACTIVITY</span>
           <h2>PhishShield at a glance</h2>
-          <p>Usage statistics reported by the connected backend.</p>
+          <p>Statistics returned by the connected backend, when available.</p>
         </div>
 
         <div className="about-stats">
@@ -174,12 +195,10 @@ export default function About() {
             <span>Scans recorded</span>
             <strong>{total === null ? "—" : total}</strong>
           </article>
-
           <article>
             <span>High-risk results</span>
             <strong>{highRisk === null ? "—" : highRisk}</strong>
           </article>
-
           <article>
             <span>Reports submitted</span>
             <strong>{reports === null ? "—" : reports}</strong>
@@ -188,28 +207,42 @@ export default function About() {
 
         {statsError && (
           <p className="about-stats-note">
-            Live statistics are temporarily unavailable. Check that the
-            backend is running.
+            Live statistics are unavailable right now. Check the backend
+            connection and its /stats endpoint.
           </p>
         )}
       </section>
 
-      <section className="about-evaluation">
-        <div className="about-section-heading">
-          <span className="about-eyebrow">MODEL EVALUATION</span>
-          <h2>Accuracy matters</h2>
+      <section className="about-limits">
+        <div className="about-limit-icon" aria-hidden="true">i</div>
+        <div>
+          <span className="about-eyebrow">IMPORTANT TO KNOW</span>
+          <h2>A risk estimate is not a guarantee.</h2>
           <p>
-            Model performance should be assessed using a representative,
-            held-out test dataset.
+            A low-risk result does not prove that a link, message, image or
+            payment request is safe. Detection can miss new scams or flag
+            legitimate content. Never share an OTP, UPI PIN or password to
+            receive money. Verify payment requests through trusted channels
+            and contact your bank immediately if you suspect fraud.
           </p>
         </div>
+      </section>
 
-        <div className="about-evaluation-note">
-          <span aria-hidden="true">ⓘ</span>
+      <section className="about-evaluation">
+        <div className="about-section-heading">
+          <span className="about-eyebrow">RESPONSIBLE ANALYSIS</span>
+          <h2>Measure performance honestly.</h2>
           <p>
-            Check your latest training and evaluation report before publishing
-            precision, recall, F1 score or false-positive counts. These values
-            can change when the dataset or model changes.
+            Precision, recall, F1 score and false-positive rates should be
+            reported only when supported by actual evaluation results.
+          </p>
+        </div>
+        <div className="about-evaluation-note">
+          <span aria-hidden="true">!</span>
+          <p>
+            Results depend on the models, datasets and external checks that
+            are configured. PhishShield should not be treated as a guarantee
+            against financial loss, phishing or fraud.
           </p>
         </div>
       </section>
